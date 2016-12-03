@@ -31,11 +31,11 @@ defmodule CodeCamp2016.Core.FollowerTest do
 
   describe "Find friends of friends" do
     test "Given a list of mutual friends, find the relation between them" do
-      mutual_friends = [2550611, 3367771, 6753802, 14448754, 18778505, 25734165, 56924553, 117843407, 134589296, 155359505, 329890100, 3282748406]
+      mutual_friends = MapSet.new([2550611, 3367771, 6753802, 14448754, 18778505, 25734165, 56924553, 117843407, 134589296, 155359505, 329890100, 3282748406])
 
       result_data  = CodeCamp2016.Core.Follower.mutual_friends_relation(mutual_friends)
 
-      assert result_data == %{nodes: mutual_friends, relations: [{2550611, 3367771}, {329890100, 3282748406}] }
+      assert result_data == %{nodes: MapSet.to_list(mutual_friends), relations: [{2550611, 3367771}, {329890100, 3282748406}] }
     end
   end
 
