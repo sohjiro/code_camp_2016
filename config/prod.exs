@@ -65,6 +65,8 @@ config :logger, level: :info
 #     config :code_camp_2016, CodeCamp2016.Endpoint, server: true
 #
 
+config :code_camp_2016, :twitter_api, CodeCamp2016.Twitter.CLI
+
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 # import_config "prod.secret.exs"

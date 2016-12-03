@@ -20,7 +20,6 @@ defmodule CodeCamp2016.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias CodeCamp2016.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
@@ -33,12 +32,6 @@ defmodule CodeCamp2016.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(CodeCamp2016.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(CodeCamp2016.Repo, {:shared, self()})
-    end
-
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

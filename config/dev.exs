@@ -30,4 +30,6 @@ config :code_camp_2016, CodeCamp2016.Repo,
   hostname: "localhost",
   pool_size: 10
 
+config :code_camp_2016, :twitter_api, CodeCamp2016.Twitter.CLI
+
 import_config "dev.secret.exs"

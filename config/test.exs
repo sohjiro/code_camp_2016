@@ -6,6 +6,8 @@ config :code_camp_2016, CodeCamp2016.Endpoint,
   http: [port: 4001],
   server: false
 
+config :code_camp_2016, :twitter_api, CodeCamp2016.Twitter.InMemory
+
 # Print only warnings and errors during test
 config :logger, level: :warn
 
