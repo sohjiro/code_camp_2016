@@ -30,7 +30,7 @@ defmodule CodeCamp2016.Web do
     quote do
       use Phoenix.Controller
 
-      alias CodeCamp2016.Repo
+      # alias CodeCamp2016.Repo
       import Ecto
       import Ecto.Query
 
@@ -62,7 +62,7 @@ defmodule CodeCamp2016.Web do
     quote do
       use Phoenix.Channel
 
-      alias CodeCamp2016.Repo
+      # alias CodeCamp2016.Repo
       import Ecto
       import Ecto.Query
       import CodeCamp2016.Gettext

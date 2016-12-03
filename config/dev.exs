@@ -22,13 +22,13 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :code_camp_2016, CodeCamp2016.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "code_camp_2016_dev",
-  hostname: "localhost",
-  pool_size: 10
+#config :code_camp_2016, CodeCamp2016.Repo,
+#  adapter: Ecto.Adapters.Postgres,
+#  username: "postgres",
+#  password: "postgres",
+#  database: "code_camp_2016_dev",
+#  hostname: "localhost",
+#  pool_size: 10
 
 config :code_camp_2016, :twitter_api, CodeCamp2016.Twitter.CLI
 

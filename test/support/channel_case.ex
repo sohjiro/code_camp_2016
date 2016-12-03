@@ -20,7 +20,7 @@ defmodule CodeCamp2016.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias CodeCamp2016.Repo
+      # alias CodeCamp2016.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
@@ -31,13 +31,13 @@ defmodule CodeCamp2016.ChannelCase do
     end
   end
 
-  setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(CodeCamp2016.Repo)
+  #setup tags do
+  #  :ok = Ecto.Adapters.SQL.Sandbox.checkout(CodeCamp2016.Repo)
 
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(CodeCamp2016.Repo, {:shared, self()})
-    end
+  #  unless tags[:async] do
+  #    Ecto.Adapters.SQL.Sandbox.mode(CodeCamp2016.Repo, {:shared, self()})
+  #  end
 
-    :ok
-  end
+  #  :ok
+  #end
 end

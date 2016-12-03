@@ -16,7 +16,7 @@ defmodule CodeCamp2016.ModelCase do
 
   using do
     quote do
-      alias CodeCamp2016.Repo
+      # alias CodeCamp2016.Repo
 
       import Ecto
       import Ecto.Changeset
@@ -25,16 +25,16 @@ defmodule CodeCamp2016.ModelCase do
     end
   end
 
-  setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(CodeCamp2016.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(CodeCamp2016.Repo, {:shared, self()})
-    end
-
-    :ok
-  end
-
+  #   setup tags do
+  #     :ok = Ecto.Adapters.SQL.Sandbox.checkout(CodeCamp2016.Repo)
+  #
+  #     unless tags[:async] do
+  #       Ecto.Adapters.SQL.Sandbox.mode(CodeCamp2016.Repo, {:shared, self()})
+  #     end
+  #
+  #     :ok
+  #   end
+  #
   @doc """
   Helper for returning list of errors in a struct when given certain data.
 
