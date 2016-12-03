@@ -14,6 +14,14 @@ defmodule CodeCamp2016.Core.Follower do
     |> parse_ids
   end
 
+  def follower_screen_name(user_id) do
+    user_id
+    |> @twitter_api.screen_name
+    |> parse_user
+  end
+
+  defp parse_user(%{screen_name: screen_name}), do: screen_name
+  defp parse_user(_anything), do: :error
   defp parse_ids(%{items: items}), do: items
   defp parse_ids(_anything), do: :error
 
