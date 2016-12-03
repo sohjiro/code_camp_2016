@@ -5,4 +5,9 @@ defmodule CodeCamp2016.Twitter.CLI do
     |> ExTwitter.follower_ids
   end
 
+  def friends(username) do
+    username
+    |> ExTwitter.friends_ids
+  end
+
 end
