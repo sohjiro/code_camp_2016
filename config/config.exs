@@ -6,8 +6,7 @@
 use Mix.Config
 
 # General application configuration
-config :code_camp_2016,
-  ecto_repos: [CodeCamp2016.Repo]
+config :code_camp_2016, ecto_repos: []
 
 # Configures the endpoint
 config :code_camp_2016, CodeCamp2016.Endpoint,

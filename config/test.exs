@@ -12,10 +12,10 @@ config :code_camp_2016, :twitter_api, CodeCamp2016.Twitter.InMemory
 config :logger, level: :warn
 
 # Configure your database
-config :code_camp_2016, CodeCamp2016.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "code_camp_2016_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+#config :code_camp_2016, CodeCamp2016.Repo,
+#  adapter: Ecto.Adapters.Postgres,
+#  username: "postgres",
+#  password: "postgres",
+#  database: "code_camp_2016_test",
+#  hostname: "localhost",
+#  pool: Ecto.Adapters.SQL.Sandbox
