@@ -14,6 +14,22 @@ defmodule CodeCamp2016.Core.Follower do
     |> parse_ids
   end
 
+  def friends_ids(username) do
+    username
+    |> @twitter_api.friends
+    |> parse_ids
+  end
+
+  def followback(username) do
+    followers = followers_ids(username) |> MapSet.new
+    friends = friends_ids(username) |> MapSet.new
+
+    friends
+    |> MapSet.intersection(followers)
+    |> MapSet.to_list
+  end
+
+
   defp parse_ids(%{items: items}), do: items
   defp parse_ids(_anything), do: :error
 
