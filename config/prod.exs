@@ -29,10 +29,10 @@ config :hello_phoenix, HelloPhoenix.Repo,
 config :logger, level: :info
 
 config :extwitter, :oauth, [
-  consumer_key: "HAZYB48Y7amAK2XHiFeRa3Urd",
-  consumer_secret: "MZcmSvbP1iJ4lGR8oyNMc5sanNdy7WQ36AEgwUtQwHvCxFBuBe",
-  access_token: "29611045-VkarDR2Rv0pkn15S5xYVvJkVdIO16Zczzqz5H10r6",
-  access_token_secret: "m6iG0cqOn3PbCe9o5IpTmaINooiOAUNNnL1F6Ecdoo3mP"
+  consumer_key: "BG0apPvJdtXh5goOywEoLg",
+  consumer_secret: "wRVxNmYpW63fDoXawkCva9RcrIf5R3riYBBDNOUkCc",
+  access_token: "63298457-rlgLzbO5nE3hcZOP4urEmMpqUjY2y3acfpbbmYnn3",
+  access_token_secret: "1oNq6SXTcxctf4KOAMUTJHEbwYEQng8OhxA1ylDc9s"
 ]
 
 # ## SSL Support

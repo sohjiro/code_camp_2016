@@ -9,6 +9,7 @@ defmodule CodeCamp2016.Router do
     pipe_through :api
     get "/followers/:user1/:user2", FollowersController, :show
     get "/followers/match/:user1/:user2", FollowersController, :match
+    get "/followers/tgf/:user1/:user2", FollowersController, :generate_tgf
   end
 
 end

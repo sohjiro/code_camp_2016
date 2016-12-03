@@ -15,6 +15,27 @@ defmodule CodeCamp2016.FollowersController do
       |> json (%{matching: TwitterClient.match_friends(user1,user2)|> translate})
 	end
 
+	def generate_tgf(conn, params) do
+		data = %{
+		  nodes: ["2550611", "3367771"],
+		  relations: [
+		    {"2550611", "3367771"}, {"6753802"}, {"14448754"}
+		  ]
+		}
+		nodes = Enum.reduce(data.nodes, "", fn(x, acc) -> acc <> x <> "\n" end)
+		edges = Enum.reduce(data.relations, "", fn(x, acc) ->
+			case x do
+				{a,b} ->
+					acc <> a <> " " <> b <> "\n"
+				{a} ->
+					acc <> a <> "\n"
+			end
+		end)
+		conn
+      |> put_status(200)
+      |> text(nodes <> "#" <> "\n" <> edges)
+	end
+
 	def translate_to_string(user_ids) do
 		Enum.map(user_ids, fn(id) -> 
 			to_string(id) 
