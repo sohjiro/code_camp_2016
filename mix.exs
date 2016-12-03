@@ -19,7 +19,7 @@ defmodule CodeCamp2016.Mixfile do
   def application do
     [mod: {CodeCamp2016, []},
      applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :extwitter]]
   end
 
   # Specifies which paths to compile per environment.
@@ -35,7 +35,10 @@ defmodule CodeCamp2016.Mixfile do
      {:phoenix_ecto, "~> 3.0"},
      {:postgrex, ">= 0.0.0"},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:oauth, github: "tim/erlang-oauth"},
+     {:extwitter, "~> 0.6"}
+   ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
