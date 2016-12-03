@@ -15,17 +15,24 @@ defmodule CodeCamp2016.Core.Follower do
     MapSet.intersection(username1_friends, username2_friends)
   end
 
+  def mutual_friends_relation(mutual_friends) do
+    mutual_friends
+    |> permute
+  end
+
+  defp permute(list) do
+    import Enum
+    (for x <- list, y <- list, x != y, do: [x, y])
+    |> map(&sort/1)
+    |> uniq
+    |> map(&List.to_tuple/1)
+  end
+
   def followers_ids(username) do
     username
     |> @twitter_api.followers
     |> parse_ids
     |> MapSet.new
-  end
-
-  def follower_screen_name(user_id) do
-    user_id
-    |> @twitter_api.screen_name
-    |> parse_user
   end
 
   def friends_ids(username) do
@@ -42,8 +49,7 @@ defmodule CodeCamp2016.Core.Follower do
     MapSet.intersection(friends, followers)
   end
 
-  defp parse_user(%{screen_name: screen_name}), do: screen_name
-  defp parse_user(_anything), do: :error
+
   defp parse_ids(%{items: items}), do: items
   defp parse_ids(_anything), do: :error
 
