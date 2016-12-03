@@ -20,7 +20,7 @@ defmodule CodeCamp2016.Core.Follower do
                 |> permute
                 |> twitter_friends([])
                 |> format
-    %{nodes: mutual_friends, relations: relations}
+    %{nodes: MapSet.to_list(mutual_friends), relations: relations}
   end
 
   defp permute(list) do
@@ -70,7 +70,7 @@ defmodule CodeCamp2016.Core.Follower do
       |> @twitter_api.screen_name
       |> parse_user
   end
- 
+
   defp parse_user(%{screen_name: screen_name}), do: screen_name
   defp parse_user(_anything), do: :error
   defp parse_ids(%{items: items}), do: items
