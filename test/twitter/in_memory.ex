@@ -30,7 +30,7 @@ defmodule CodeCamp2016.Twitter.InMemory do
 
   def followers(2550611), do: %ExTwitter.Model.Cursor{items: [3367771], next_cursor: 0, previous_cursor: 0}
   def followers(329890100), do: %ExTwitter.Model.Cursor{items: [3282748406], next_cursor: 0, previous_cursor: 0}
-  def followers(other), do: %ExTwitter.Model.Cursor{items: [], next_cursor: 0, previous_cursor: 0}
+  def followers(_other), do: %ExTwitter.Model.Cursor{items: [], next_cursor: 0, previous_cursor: 0}
 
   def friends("sohjiro") do
     %ExTwitter.Model.Cursor{items: [8383372, 1289786120, 342478944, 56924553,
@@ -56,6 +56,6 @@ defmodule CodeCamp2016.Twitter.InMemory do
 
   def friends(2550611), do: %ExTwitter.Model.Cursor{items: [3367771], next_cursor: 0, previous_cursor: 0}
   def friends(329890100), do: %ExTwitter.Model.Cursor{items: [3282748406], next_cursor: 0, previous_cursor: 0}
-  def friends(other), do: %ExTwitter.Model.Cursor{items: [], next_cursor: 0, previous_cursor: 0}
+  def friends(_other), do: %ExTwitter.Model.Cursor{items: [], next_cursor: 0, previous_cursor: 0}
 
 end
