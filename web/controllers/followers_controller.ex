@@ -12,7 +12,7 @@ defmodule CodeCamp2016.FollowersController do
 	def match(conn, %{"user1" => user1,"user2" => user2}) do
 		conn
       |> put_status(200)
-      |> json (%{matching: TwitterClient.match_followers(user1,user2)|> translate})
+      |> json (%{matching: TwitterClient.match_friends(user1,user2)|> translate})
 	end
 
 	def translate_to_string(user_ids) do
