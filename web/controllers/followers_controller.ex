@@ -5,23 +5,23 @@ defmodule CodeCamp2016.FollowersController do
 	def show(conn, %{"user1" => user1,"user2" => user2}) do
 		conn
       |> put_status(200)
-      |> json (%{user1: TwitterClient.followers_ids(user1) |> translate_to_string,
-      	         user2: TwitterClient.followers_ids(user2) |> translate_to_string} )
+      |> json(%{user1: TwitterClient.followers_ids(user1) |> translate_to_string,
+                user2: TwitterClient.followers_ids(user2) |> translate_to_string})
 	end
 
 	def match(conn, %{"user1" => user1,"user2" => user2}) do
 		conn
-      |> put_status(200)
-      |> json (%{matching: TwitterClient.match_friends(user1,user2)|> translate})
+    |> put_status(200)
+    |> json(%{matching: TwitterClient.match_friends(user1,user2) |> translate})
 	end
 
-	def generate_tgf(conn, params) do
-		data = %{
-		  nodes: ["2550611", "3367771"],
-		  relations: [
-		    {"2550611", "3367771"}, {"6753802"}, {"14448754"}
-		  ]
-		}
+	def generate_tgf(conn, %{"user1" => user1,"user2" => user2}) do
+    data = user1
+           |> TwitterClient.match_friends(user2)
+           |> IO.inspect
+           |> TwitterClient.mutual_friends_relation
+           |> IO.inspect
+
 		nodes = Enum.reduce(data.nodes, "", fn(x, acc) -> acc <> x <> "\n" end)
 		edges = Enum.reduce(data.relations, "", fn(x, acc) ->
 			case x do
@@ -37,13 +37,13 @@ defmodule CodeCamp2016.FollowersController do
 	end
 
 	def translate_to_string(user_ids) do
-		Enum.map(user_ids, fn(id) -> 
-			to_string(id) 
+		Enum.map(user_ids, fn(id) ->
+			to_string(id)
 		end)
 	end
 
 	def translate(user_ids) do
-		Enum.map(user_ids, fn(id) -> 
+		Enum.map(user_ids, fn(id) ->
 			IO.inspect TwitterClient.follower_screen_name(id)
 		end)
 	end
