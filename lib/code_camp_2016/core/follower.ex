@@ -16,17 +16,33 @@ defmodule CodeCamp2016.Core.Follower do
   end
 
   def mutual_friends_relation(mutual_friends) do
-    mutual_friends
-    |> permute
+    relations = mutual_friends
+                |> permute
+                |> twitter_friends([])
+                |> format
+    %{nodes: mutual_friends, relations: relations}
   end
 
   defp permute(list) do
     import Enum
+
     (for x <- list, y <- list, x != y, do: [x, y])
     |> map(&sort/1)
     |> uniq
     |> map(&List.to_tuple/1)
   end
+
+  defp twitter_friends([], acc), do: acc
+  defp twitter_friends([{x, y} | rest], acc) do
+    case friends?(x, y) do
+      true -> twitter_friends(rest, [{x, y} | acc])
+      false -> twitter_friends(rest, acc)
+    end
+  end
+
+  defp format(list), do: list |> Enum.uniq |> Enum.reverse
+
+  defp friends?(user1, user2), do: user2 in followback(user1)
 
   def followers_ids(username) do
     username
@@ -48,7 +64,6 @@ defmodule CodeCamp2016.Core.Follower do
 
     MapSet.intersection(friends, followers)
   end
-
 
   defp parse_ids(%{items: items}), do: items
   defp parse_ids(_anything), do: :error
