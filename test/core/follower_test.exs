@@ -22,6 +22,11 @@ defmodule CodeCamp2016.Core.FollowerTest do
       ids = CodeCamp2016.Core.Follower.followback("sohjiro")
       assert ids == @follow_back
     end
+
+    test "given two usernames find common friends" do
+      common_friends = CodeCamp2016.Core.Follower.match_friends("sohjiro", "misaelpc")
+      assert common_friends == MapSet.new([1289786120])
+    end
   end
 
 end

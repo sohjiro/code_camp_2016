@@ -8,6 +8,13 @@ defmodule CodeCamp2016.Core.Follower do
     MapSet.intersection(username1_followers, username2_followers)
   end
 
+  def match_friends(username1, username2) do
+    username1_friends = followback(username1) |> MapSet.new
+    username2_friends = followback(username2) |> MapSet.new
+
+    MapSet.intersection(username1_friends, username2_friends)
+  end
+
   def followers_ids(username) do
     username
     |> @twitter_api.followers
