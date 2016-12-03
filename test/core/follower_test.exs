@@ -6,12 +6,12 @@ defmodule CodeCamp2016.Core.FollowerTest do
   describe "Find follower" do
     test "given an username it should return his followers ids" do
       ids = CodeCamp2016.Core.Follower.followers_ids("sohjiro")
-      assert ids == MapSet.new(@follower_ids)
+      assert ids == @follower_ids
     end
 
     test "given two usernames find common followers" do
       common_followers = CodeCamp2016.Core.Follower.match_followers("sohjiro", "misaelpc")
-      assert common_followers == 2
+      assert common_followers == MapSet.new([1289786120, 2768128694])
     end
   end
 
