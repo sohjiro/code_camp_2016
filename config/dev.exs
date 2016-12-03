@@ -29,3 +29,5 @@ config :code_camp_2016, CodeCamp2016.Repo,
   database: "code_camp_2016_dev",
   hostname: "localhost",
   pool_size: 10
+
+import_config "dev.secret.exs"
