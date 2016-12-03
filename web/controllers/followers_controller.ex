@@ -18,17 +18,15 @@ defmodule CodeCamp2016.FollowersController do
 	def generate_tgf(conn, %{"user1" => user1,"user2" => user2}) do
     data = user1
            |> TwitterClient.match_friends(user2)
-           |> IO.inspect
            |> TwitterClient.mutual_friends_relation
-           |> IO.inspect
 
-		nodes = Enum.reduce(data.nodes, "", fn(x, acc) -> acc <> x <> "\n" end)
+		nodes = Enum.reduce(data.nodes, "", fn(x, acc) -> acc <> "#{x}" <> "\n" end)
 		edges = Enum.reduce(data.relations, "", fn(x, acc) ->
 			case x do
 				{a,b} ->
-					acc <> a <> " " <> b <> "\n"
+					acc <> "#{a} #{b}" <> "\n"
 				{a} ->
-					acc <> a <> "\n"
+					acc <> "#{a}" <> "\n"
 			end
 		end)
 		conn
