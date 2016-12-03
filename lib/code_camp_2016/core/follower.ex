@@ -2,15 +2,15 @@ defmodule CodeCamp2016.Core.Follower do
   @twitter_api Application.get_env(:code_camp_2016, :twitter_api)
 
   def match_followers(username1, username2) do
-    username1_followers = followers_ids(username1) |> MapSet.new
-    username2_followers = followers_ids(username2) |> MapSet.new
+    username1_followers = followers_ids(username1)
+    username2_followers = followers_ids(username2)
 
     MapSet.intersection(username1_followers, username2_followers)
   end
 
   def match_friends(username1, username2) do
-    username1_friends = followback(username1) |> MapSet.new
-    username2_friends = followback(username2) |> MapSet.new
+    username1_friends = followback(username1)
+    username2_friends = followback(username2)
 
     MapSet.intersection(username1_friends, username2_friends)
   end
@@ -19,21 +19,21 @@ defmodule CodeCamp2016.Core.Follower do
     username
     |> @twitter_api.followers
     |> parse_ids
+    |> MapSet.new
   end
 
   def friends_ids(username) do
     username
     |> @twitter_api.friends
     |> parse_ids
+    |> MapSet.new
   end
 
   def followback(username) do
-    followers = followers_ids(username) |> MapSet.new
-    friends = friends_ids(username) |> MapSet.new
+    followers = followers_ids(username)
+    friends = friends_ids(username)
 
-    friends
-    |> MapSet.intersection(followers)
-    |> MapSet.to_list
+    MapSet.intersection(friends, followers)
   end
 
 
