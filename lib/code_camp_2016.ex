@@ -9,7 +9,7 @@ defmodule CodeCamp2016 do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(CodeCamp2016.Repo, []),
+      # supervisor(CodeCamp2016.Repo, []),
       # Start the endpoint when the application starts
       supervisor(CodeCamp2016.Endpoint, []),
       # Start your own worker by calling: CodeCamp2016.Worker.start_link(arg1, arg2, arg3)
